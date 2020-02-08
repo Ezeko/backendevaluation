@@ -9,14 +9,10 @@ const Story =  dbConn.define('Story',{
     complexity:  Sequelize.STRING,
     timeForCompletion: Sequelize.STRING,
     cost:  Sequelize.STRING, 
-    owner: Sequelize.STRING
+    owner: Sequelize.STRING,
+    status: Sequelize.STRING
 })
-/*Story.sync().then(()=>{
-    
-    console.log('table created')
-}).catch(err=>{
-    console.log(err)
-})*/
+
 //story belongs to owner
 
 

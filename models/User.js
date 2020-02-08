@@ -10,13 +10,6 @@ const User =  dbConn.define('User',{
 })
 
 
-
-/*User.sync({force: true}).then(()=>{
-    
-    console.log('table created')
-}).catch(err=>{
-    console.log(err)
-})*/
 //User.hasMany(Story);
 
 module.exports =  User;
