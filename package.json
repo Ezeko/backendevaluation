@@ -4,7 +4,7 @@
   "description": "backend api",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,15 @@
   "homepage": "https://github.com/Ezeko/backendevaluation#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "custom-env": "^1.0.2",
     "express": "^4.17.1",
     "jasmine": "^3.5.0",
     "mocha": "^7.0.1",
     "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
     "sequelize": "^5.21.4"
   }
 }
