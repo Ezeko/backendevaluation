@@ -21,7 +21,7 @@ exports.getStories = ((req, res, next)=>{
             })
         }
     }).catch((error)=>{
-      return  res.status(404).send({
+      return  res.status(404).json({
             error
         })
     })
@@ -30,12 +30,13 @@ exports.getStories = ((req, res, next)=>{
 
 
 exports.deleteStory = (async(req, res, next)=>{
-    Story.delete({where: req.params.id}).then(()=>{
-        return res.status(200).send({
+    var id = req.params.id
+    Story.delete({where: {id}}).then(()=>{
+        return res.status(200).json({
             "Message": "Story Deleted"
         })
     }).catch((error)=>{
-        return res.status(400).send({
+        return res.status(400).json({
             error
         })
     })
@@ -44,7 +45,8 @@ exports.deleteStory = (async(req, res, next)=>{
 
 exports.updateStory = (async(req, res, next)=>{
     const data = req.body;
-    Story.update({data, where: data.id }).then(()=>{
+    var id = data.id
+    Story.update({data, where: {id} }).then(()=>{
         return res.status(200).json({
             "Message": "Story Updated"
         })

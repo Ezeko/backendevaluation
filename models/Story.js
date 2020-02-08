@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const dbConn = require('../db/connect')
    
 
-const Story =  dbConn.define('Story',{
+const Story = dbConn.define('Story',{
     summary: Sequelize.STRING,
     type: Sequelize.STRING, 
     description:  Sequelize.STRING, 

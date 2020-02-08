@@ -3,7 +3,7 @@ const Story = require ('../models/Story');
 
 exports.createStory = (async (req, res, next)=>{
 
-    const story =  Story.create( {
+         Story.create( {
         summary: req.body.summary,
         type: req.body.type,
         description: req.body.description,
@@ -11,15 +11,20 @@ exports.createStory = (async (req, res, next)=>{
         timeForCompletion: req.body.timeForCompletion,
         cost: req.body.cost,
         owner: req.body.owner
-    }).then(()=>{
-
-       return  res.status(201).json({
+    }).then((story)=>{
+            if(!(story)){
+                throw new  Error("Story  not created")
+            }
+          res.status(C.Status.OK).json({
             message: "Story created"
         })
+
+        return;
     }).catch((error)=>{
-        return res.status(400).json({
+         res.sendStatus(400).json({
             error
         })
+        return
     })
 
   
