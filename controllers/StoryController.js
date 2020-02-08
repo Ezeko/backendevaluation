@@ -3,7 +3,7 @@ const Story = require ('../models/Story');
 
 exports.createStory = (async (req, res, next)=>{
 
-     const story =  Story.create( {
+    const story =  Story.create( {
         summary: req.body.summary,
         type: req.body.type,
         description: req.body.description,
@@ -17,10 +17,12 @@ exports.createStory = (async (req, res, next)=>{
             message: "Story created"
         })
     }).catch((error)=>{
-        return res.status(404).json({
+        return res.status(400).json({
             error
         })
     })
+
+  
     
     next();
 })

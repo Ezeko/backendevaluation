@@ -9,6 +9,8 @@ const User =  dbConn.define('User',{
     isAdmin:  Sequelize.BOOLEAN
 })
 
+
+
 /*User.sync({force: true}).then(()=>{
     
     console.log('table created')

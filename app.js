@@ -10,11 +10,12 @@ require('custom-env').env();
 
 
     //cross origin resources share
-    app.use((req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    app.use( async (req, res, next) => {
+        await res.setHeader('Access-Control-Allow-Origin', '*');
+        await res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+        await res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
         next();
+        return
       });
    app.use(cors());
    app.use(express.urlencoded({ extended: true }));
@@ -22,6 +23,6 @@ app.use(bodyParser.json());
 
 app.use('/', Router);
 
-app.use('/create', Router);
+
 
 module.exports = app;

@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize');
-const User = require('./User');
 const dbConn = require('../db/connect')
    
 
-const Story =  dbConn.define('story',{
+const Story =  dbConn.define('Story',{
     summary: Sequelize.STRING,
     type: Sequelize.STRING, 
     description:  Sequelize.STRING, 
@@ -12,7 +11,6 @@ const Story =  dbConn.define('story',{
     cost:  Sequelize.STRING, 
     owner: Sequelize.STRING
 })
-
 /*Story.sync().then(()=>{
     
     console.log('table created')
