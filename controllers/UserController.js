@@ -5,9 +5,9 @@ const Story = require('../models/Story')
 exports.getStories = ((req, res, next)=>{
     const user = req.param.user;
     User.findOne({where: user}).then((data)=>{
-        if((data.isAdmin)== true){
+        if((data.length)> 0){
             //display list
-            Story.findAll().then((stories)=>{
+            Story.find({where: {owner: user}}).then((stories)=>{
                 res.status(200).json(stories)
             }).catch((error)=>{
                 res.status(400).json({
@@ -27,5 +27,3 @@ exports.getStories = ((req, res, next)=>{
     })
     next()
 })
-
-
