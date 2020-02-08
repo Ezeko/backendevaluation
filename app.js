@@ -5,7 +5,6 @@ const cors = require('cors');
 const app = express();
 const Router = require('./routers/router')
 require('custom-env').env();
-const mysql = require('mysql')
 
 const Sequelize = require('sequelize');
 
@@ -13,7 +12,7 @@ const Sequelize = require('sequelize');
 const path = process.env.DB_URL;
 const conn = new Sequelize(path,{operatorsAliases: false});
     conn.authenticate().then(()=>{
-        console.log('Connected with sequelize')
+        console.log('Connected to database')
     }).catch((err)=>{
         console.log(err)
     }).finally(()=>{
@@ -21,17 +20,7 @@ const conn = new Sequelize(path,{operatorsAliases: false});
     }
     )
 
-const con = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD
-})
- con.connect((err)=>{
-     if (err){
-         throw err
-     }
-     console.log('connected')
- })
+
     //cross origin resources share
     app.use((req, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
