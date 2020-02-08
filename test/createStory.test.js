@@ -18,7 +18,7 @@ describe('Create Story', () => {
     chai.request(app)
       .post('/create')
       .end((error, res) => {
-        expect(res).to.have.status(200);
+        expect(res).to.have.status(201);
         done();
       });
   });

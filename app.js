@@ -6,19 +6,7 @@ const app = express();
 const Router = require('./routers/router')
 require('custom-env').env();
 
-const Sequelize = require('sequelize');
 
-
-const path = process.env.DB_URL;
-const conn = new Sequelize(path,{operatorsAliases: false});
-    conn.authenticate().then(()=>{
-        console.log('Connected to database')
-    }).catch((err)=>{
-        console.log(err)
-    }).finally(()=>{
-        conn.close();
-    }
-    )
 
 
     //cross origin resources share
@@ -34,6 +22,6 @@ app.use(bodyParser.json());
 
 app.use('/', Router);
 
-//app.use('/api/auth')
+app.use('/create', Router);
 
 module.exports = app;

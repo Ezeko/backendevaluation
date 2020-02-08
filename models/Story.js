@@ -1,14 +1,25 @@
 const Sequelize = require('sequelize');
+const User = require('./User');
+const dbConn = require('../db/connect')
+   
 
-
-const Story =  sequelize.define('User',{
-    summary:{type: Sequelize.STRING, required: true},
-    type: {type: Sequelize.STRING, required: true},
-    description: {type: Sequelize.STRING, required: true},
-    complexity: {type: Sequelize.STRING, required: true},
-    timeForCompletion: {type: Sequelize.STRING, required: true},
-    cost: {type: Sequelize.INTEGER, required: true},
-    belongsTo: {User: {user_id: {type: Sequelize.INTEGER},username: {type: Sequelize.STRING}, required: true}}
+const Story =  dbConn.define('story',{
+    summary: Sequelize.STRING,
+    type: Sequelize.STRING, 
+    description:  Sequelize.STRING, 
+    complexity:  Sequelize.STRING,
+    timeForCompletion: Sequelize.STRING,
+    cost:  Sequelize.STRING, 
+    owner: Sequelize.STRING
 })
 
-exports.module = Story;
+/*Story.sync().then(()=>{
+    
+    console.log('table created')
+}).catch(err=>{
+    console.log(err)
+})*/
+//story belongs to owner
+
+
+module.exports = Story;
