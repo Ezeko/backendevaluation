@@ -32,7 +32,9 @@ app.get('/users/stories/{user}', UserController.getStories)
 
 app.post('/create', create.createStory)
 
-app.get('/admin/stories/:user', AdminController.getStories)
+app.get('/admin/stories/{user}', AdminController.getStories)
+app.put('/admin/stories/update', AdminController.updateStory); //send all parameters with form
+app.delete('/admin/stories/delete/{id}', AdminController.deleteStory);
 
 
 

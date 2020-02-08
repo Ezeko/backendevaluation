@@ -7,7 +7,7 @@ const Story =  dbConn.define('Story',{
     type: Sequelize.STRING, 
     description:  Sequelize.STRING, 
     complexity:  Sequelize.STRING,
-    timeForCompletion: Sequelize.STRING,
+    timeForCompletion: Sequelize.DATE,
     cost:  Sequelize.STRING, 
     owner: Sequelize.STRING,
     status: Sequelize.STRING

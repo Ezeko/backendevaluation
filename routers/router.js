@@ -14,7 +14,7 @@ router.post('/create', create.createStory)
 
 router.get('/users/stories/{user}', UserController.getStories)
 
-router.get('/admin/stories/:user', AdminController.getStories)
+router.get('/', AdminController.getStories)
 
 
 
