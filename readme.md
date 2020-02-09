@@ -25,6 +25,8 @@ Example Request
 Default
 curl --location --request GET '/users/stories/:user' \
 --data-raw ''
+
+
 <b>GET</b> /api/admin/stories/:user
 
 /admin/stories/:user
@@ -37,7 +39,9 @@ Example Request
 Default
 curl --location --request GET '/admin/stories/:user' \
 --data-raw ''
-POST /api/create
+
+
+<b>POST</b> /api/create
 /create
 This route allows user to create new story with the following parameters - summary: STRING, type: STRING, description: STRING, complexity: STRING, timeForCompletion: DATE, cost: Integer, owner: STRING, status: STRING
 
@@ -45,20 +49,24 @@ This route allows user to create new story with the following parameters - summa
 
 Example Request
 Default
-curl --location --request POST '/create' \
+<b> curl --location --request POST '/create' \</b>
 --data-raw ''
-PUT /api/admin/stories/update
+
+
+<b>PUT</b> /api/admin/stories/update
 
 /admin/stories/update
 Where admin updates stories. All the parameters should be sent with the form including the user_id and the story's id
 
 
 
-Example Request
+<b>Example Request</b>
 Default
-curl --location --request PUT '/admin/stories/update' \
+<b>curl --location --request PUT '/admin/stories/update' \</b>
 --data-raw ''
-DEL /api/admin/stories/delete/:id
+
+
+<b>DEL</b> /api/admin/stories/delete/:id
 
 /admin/stories/delete/:id
 Route to delete story by admin
@@ -68,5 +76,5 @@ id
 
 Example Request
 Default
-curl --location --request DELETE '/admin/stories/delete/:id' \
+<b>curl --location --request DELETE '/admin/stories/delete/:id' \</b>
 --data-raw ''
