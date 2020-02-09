@@ -20,5 +20,5 @@ const create_users_table = ()=>{
 })
 }
 
-//create_stories_table();
-//create_users_table();
+create_stories_table();
+create_users_table();
