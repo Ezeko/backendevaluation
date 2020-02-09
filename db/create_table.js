@@ -3,9 +3,9 @@ const User = require('../models/User')
 
 const create_stories_table = () =>{
 
-Story.sync().then(()=>{
+Story.sync({force: true}).then(()=>{
     
-    console.log('table created')
+    console.log('stories table created')
 }).catch(err=>{
     console.log(err)
 })
@@ -19,3 +19,6 @@ const create_users_table = ()=>{
     console.log(err)
 })
 }
+
+//create_stories_table();
+//create_users_table();

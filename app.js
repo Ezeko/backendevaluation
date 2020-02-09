@@ -6,14 +6,14 @@ const express = require('express'); //import express
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const Router = require('./routers/router')
+//const Router = require('./routers/router')
 require('custom-env').env();
 
 
 
 
     //cross origin resources share
-    app.use( async (req, res, next) => {
+    /*app.use( async (req, res, next) => {
         //return res.setHeader('Access-Control-Allow-Origin', '*');
          res.setHeader(
           'Access-Control-Allow-Headers', 
@@ -25,7 +25,7 @@ require('custom-env').env();
        );
         next();
         return;
-      });
+      });*/
    app.use(cors());
    app.use(express.json());
    app.use(express.urlencoded({ extended: true }));
@@ -35,13 +35,13 @@ app.get('/', home.gate);
 
 //user get stories
 
-app.get('/users/stories/:user', UserController.getStories)
+app.get('/api/users/stories/{user}', UserController.getStories) 
 
-app.post('/create', create.createStory)
+app.post('/api/create', create.createStory)
 
-app.get('/admin/stories/:user', AdminController.getStories)
-app.put('/admin/stories/update', AdminController.updateStory); //send all parameters with form
-app.delete('/admin/stories/delete/:id', AdminController.deleteStory);
+app.get('/api/admin/stories/{user}', AdminController.getStories)
+app.put('/api/admin/stories/update', AdminController.updateStory); //send all parameters with form
+app.delete('/api/admin/stories/delete/:id', AdminController.deleteStory);
 
 
 

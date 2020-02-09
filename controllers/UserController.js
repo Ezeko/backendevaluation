@@ -2,26 +2,22 @@ const User = require('../models/User')
 const Story = require('../models/Story')
 
 
-exports.getStories = ((req, res, next)=>{
-    const user = req.param.user;
-    User.findOne({where: user}).then((data)=>{
-        if((data.length)> 0){
+exports.getStories = (async(req, res, next)=>{
+    let user = req.params.user;
+   await  User.findOne({where: {username: user}}).then(()=>{
             //display list
-            Story.find({where: {owner: user}}).then((stories)=>{
-                res.status(200).json(stories)
+            Story.findAll({where: {owner: user}}).then((stories)=>{
+                console.log(stories)
+              return  res.status(200).json(stories)
             }).catch((error)=>{
-                res.status(400).json({
+             return   res.status(400).json({
                     error
                 })
             })
 
-        }else{
-            res.status(200).send({
-                "Message": "You are not Authorized to view this"
-            })
-        }
     }).catch((error)=>{
-        res.status(404).send({
+        return  res.status(400).json({
+            "Message": "You are not Authorized to view this",
             error
         })
     })

@@ -1,33 +1,32 @@
 const Story = require ('../models/Story');
 
-
 exports.createStory = (async (req, res, next)=>{
-
-         Story.create( {
+    let story = await Story.build({
         summary: req.body.summary,
-        type: req.body.type,
-        description: req.body.description,
-        complexity: req.body.complexity,
+        type: req.body.type, 
+        description:  req.body.description, 
+        complexity:  req.body.complexity,
         timeForCompletion: req.body.timeForCompletion,
-        cost: req.body.cost,
-        owner: req.body.owner
-    }).then((story)=>{
-            if(!(story)){
-                throw new  Error("Story  not created")
-            }
-          res.status(C.Status.OK).json({
-            message: "Story created"
-        })
+        cost:  req.body.cost, 
+        owner: req.body.owner,
+        status: "PENDING"
 
-        return;
+    });
+    await story.save().then((saved)=>{
+        if(saved){
+            return res.status(201).json({
+                Message: "Story Created"
+            })
+        }else{
+            return res.status(400).json({
+                Message: "Something Went Wrong!"
+            })
+        }
     }).catch((error)=>{
-         res.sendStatus(400).json({
-            error
-        })
-        return
+        return res.status(406).json(error)
     })
-
-  
     
-    next();
-})
+  next()
+  });
+  
+ 

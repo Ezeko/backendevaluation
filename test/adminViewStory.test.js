@@ -16,7 +16,7 @@ const {
 describe('Admin view Story', () => {
   it("it should let admin view user's story", (done) => {
     chai.request(app)
-      .get('/admin/stories/admin')
+      .get(`/api/admin/stories/${admin}`)
       .end((error, res) => {
         expect(res).to.have.status(200);
         done();

@@ -8,7 +8,7 @@ dbConn.authenticate().then(()=>{
 }).catch((err)=>{
  console.log(err)
 }).finally(()=>{
-    dbConn.close();
+    //dbConn.close();
 }
 )
 

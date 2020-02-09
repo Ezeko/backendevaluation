@@ -16,7 +16,7 @@ const {
 describe('Create Story', () => {
   it("it should create user's story", (done) => {
     chai.request(app)
-      .post('/create')
+      .post('/api/create')
       .end((error, res) => {
         expect(res).to.have.status(201);
         done();
