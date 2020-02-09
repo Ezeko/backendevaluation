@@ -13,8 +13,8 @@ require('custom-env').env();
 
 
     //cross origin resources share
-    /*app.use( async (req, res, next) => {
-        //return res.setHeader('Access-Control-Allow-Origin', '*');
+    app.use( async (req, res, next) => {
+       res.setHeader('Access-Control-Allow-Origin', '*');
          res.setHeader(
           'Access-Control-Allow-Headers', 
           'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization'
@@ -25,7 +25,7 @@ require('custom-env').env();
        );
         next();
         return;
-      });*/
+      });
    app.use(cors());
    app.use(express.json());
    app.use(express.urlencoded({ extended: true }));
