@@ -4,9 +4,9 @@ const Story = require('../models/Story')
 
 exports.getStories = (async(req, res, next)=>{
     let user = req.params.user;
-   await  User.findOne({where: {username: user}}).then(()=>{
+  let findUser =  await  User.findOne({where: {username: user}});
             //display list
-            Story.findAll({where: {owner: user}}).then((stories)=>{
+           if (findUser){ Story.findAll({where: {owner: user}}).then((stories)=>{
                 console.log(stories)
               return  res.status(200).json(stories)
             }).catch((error)=>{
@@ -14,12 +14,7 @@ exports.getStories = (async(req, res, next)=>{
                     error
                 })
             })
-
-    }).catch((error)=>{
-        return  res.status(400).json({
-            "Message": "You are not Authorized to view this",
-            error
-        })
+        }
+        next()
     })
-    next()
-})
+ 

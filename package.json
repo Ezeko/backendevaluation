@@ -1,10 +1,12 @@
 {
   "name": "backend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "backend api",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha --coverage --reporter-html",
+    "migrate": "node db/create_tables.js",
+    "start-dev": "nodemon server"
   },
   "repository": {
     "type": "git",
