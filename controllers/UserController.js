@@ -4,9 +4,9 @@ const Story = require('../models/Story')
 
 exports.getStories = (async(req, res, next)=>{
     let user = req.params.user;
-  let findUser =  await  User.findOne({where: {username: user}});
+     await  User.findOne({where: {username: user}}).then(()=>{
             //display list
-           if (findUser){ Story.findAll({where: {owner: user}}).then((stories)=>{
+           Story.findAll({where: {owner: user}}).then((stories)=>{
                 console.log(stories)
               return  res.status(200).json(stories)
             }).catch((error)=>{
@@ -14,7 +14,7 @@ exports.getStories = (async(req, res, next)=>{
                     error
                 })
             })
-        }
+        })
         next()
     })
  
