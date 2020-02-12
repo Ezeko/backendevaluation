@@ -12,7 +12,7 @@ chai.should()
 const {
   expect
 } = chai;
-let id = 1;
+let id = 1; //increase id to allow test pass
 describe('Admin delete Story', () => {
   it("it should allow admin delete user's story", (done) => {
     chai.request(app)
