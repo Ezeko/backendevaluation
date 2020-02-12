@@ -4,17 +4,18 @@ const Story = require('../models/Story')
 
 exports.getStories = (async(req, res, next)=>{
     let user = req.params.user;
-    await User.findOne({where: {id: user}}).then((data)=>{
+     await User.findOne({where: {id: user}}).then((data)=>{
         console.log(data)
         if((data.isAdmin)){
             //display list
-            Story.findAll().then((stories)=>{
-                return res.status(200).json(stories)
-            }).catch((error)=>{
+           try{ Story.findAll().then((stories)=>{
+                console.log(stories)
+                 res.status(200).json(stories)
+            })}catch{((error)=>{
                return res.status(400).json({
                     error
                 })
-            })
+            })}
 
         }else{
            return res.status(400).send({
@@ -26,13 +27,13 @@ exports.getStories = (async(req, res, next)=>{
             error
         })
     })
-    next()
+    
 })
 
 
 exports.deleteStory = (async(req, res, next)=>{
     let id = req.params.id
-    Story.destroy({where: {id}}).then(()=>{
+    await Story.destroy({where: {id}}).then(()=>{
         return res.status(200).json({
             Message: "Story Deleted"
         })
@@ -41,14 +42,14 @@ exports.deleteStory = (async(req, res, next)=>{
             error
         })
     })
-    next()
+
 })
 
 
 exports.updateStory = (async(req, res, next)=>{
     const data = req.body;
     let id = data.id
-    Story.update({data}, {where: {id} }).then(()=>{
+    await Story.update({data}, {where: {id} }).then(()=>{
         return res.status(200).json({
             Message: "Story Updated"
         })
@@ -57,5 +58,5 @@ exports.updateStory = (async(req, res, next)=>{
             error
         })
     })
-    next()
+    
 })

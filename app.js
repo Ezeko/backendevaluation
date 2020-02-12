@@ -7,13 +7,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 //const Router = require('./routers/router')
-require('custom-env').env();
+//require('custom-env').env();
 
 
 
 
     //cross origin resources share
-    app.use( async (req, res, next) => {
+    /*app.use( async (req, res, next) => {
        res.setHeader('Access-Control-Allow-Origin', '*');
          res.setHeader(
           'Access-Control-Allow-Headers', 
@@ -25,7 +25,7 @@ require('custom-env').env();
        );
         next();
         return;
-      });
+      });*/
    app.use(cors());
    app.use(express.json());
    app.use(express.urlencoded({ extended: true }));
