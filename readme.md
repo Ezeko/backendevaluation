@@ -16,7 +16,7 @@ Language
 
 /users/stories/:user
 
-Get users story created by the User. The user parameter is the username of the user.
+Get users story created by the User. The user parameter is the id of the user.
 
 PATH VARIABLES
 user
@@ -33,7 +33,7 @@ curl --location --request GET '/users/stories/:user' \
 This route allows admin to see the list of stories created
 
 PATH VARIABLES
-user = the username of the admin
+user = the user id of the admin
 
 Example Request
 Default
@@ -56,7 +56,9 @@ Default
 <b>PUT</b> /api/admin/stories/update
 
 /admin/stories/update
-Where admin updates stories. All the parameters should be sent with the form including the user_id and the story's id
+Where admin updates stories. All the parameters should be sent with the form including the stoty id
+ 
+Assumption is that it is only admin that can have access to the delete button
 
 
 
@@ -70,6 +72,8 @@ Default
 
 /admin/stories/delete/:id
 Route to delete story by admin
+
+Assumption is that it is only admin that can have access to the delete button
 
 PATH VARIABLES
 id
