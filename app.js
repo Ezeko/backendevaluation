@@ -35,11 +35,12 @@ app.get('/', home.gate);
 
 //user get stories
 
-app.get('/api/users/stories/{user}', UserController.getStories) 
+app.get('/api/users/stories/:user', UserController.getUsersStories)  //user id
 
 app.post('/api/create', create.createStory)
 
-app.get('/api/admin/stories/{user}', AdminController.getStories)
+app.get('/api/admin/stories/:user', AdminController.getStories) //admin id
+
 app.put('/api/admin/stories/update', AdminController.updateStory); //send all parameters with form
 app.delete('/api/admin/stories/delete/:id', AdminController.deleteStory);
 

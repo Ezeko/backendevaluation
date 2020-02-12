@@ -2,10 +2,11 @@ const User = require('../models/User')
 const Story = require('../models/Story')
 
 
-exports.getStories = ((req, res, next)=>{
+exports.getStories = (async(req, res, next)=>{
     let user = req.params.user;
-    User.findOne({where: {username: user}}).then((data)=>{
-        if((data.isAdmin)== true){
+    await User.findOne({where: {id: user}}).then((data)=>{
+        console.log(data)
+        if((data.isAdmin)){
             //display list
             Story.findAll().then((stories)=>{
                 return res.status(200).json(stories)
@@ -17,7 +18,7 @@ exports.getStories = ((req, res, next)=>{
 
         }else{
            return res.status(400).send({
-                "Message": "You are not Authorized to view this"
+                Message: "You are not Authorized to view this"
             })
         }
     }).catch((error)=>{
@@ -30,10 +31,10 @@ exports.getStories = ((req, res, next)=>{
 
 
 exports.deleteStory = (async(req, res, next)=>{
-    var id = req.params.id
+    let id = req.params.id
     Story.destroy({where: {id}}).then(()=>{
         return res.status(200).json({
-            "Message": "Story Deleted"
+            Message: "Story Deleted"
         })
     }).catch((error)=>{
         return res.status(400).json({
@@ -46,10 +47,10 @@ exports.deleteStory = (async(req, res, next)=>{
 
 exports.updateStory = (async(req, res, next)=>{
     const data = req.body;
-    var id = data.id
+    let id = data.id
     Story.update({data}, {where: {id} }).then(()=>{
         return res.status(200).json({
-            "Message": "Story Updated"
+            Message: "Story Updated"
         })
     }).catch((error)=>{
         return res.status(400).json({

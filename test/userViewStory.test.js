@@ -13,10 +13,11 @@ const {
   expect
 } = chai;
 
+let user = 2
 describe('View Story', () => {
   it("it should allow user's see their story", (done) => {
     chai.request(app)
-      .get(`/api/users/stories/${normaluser}`)
+      .get(`/api/users/stories/${user}`)
       .end((error, res) => {
         expect(res).to.have.status(200);
         done();

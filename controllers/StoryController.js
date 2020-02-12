@@ -15,7 +15,7 @@ exports.createStory = (async (req, res, next)=>{
     await story.save().then((saved)=>{
         if(saved){
             return res.status(201).json({
-                Message: "Story Created"
+                Message: "Story Created Successfully"
             })
         }else{
             return res.status(400).json({
