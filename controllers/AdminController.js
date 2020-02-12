@@ -31,7 +31,7 @@ exports.getStories = (async(req, res, next)=>{
 })
 
 
-exports.deleteStory = (async(req, res, next)=>{
+exports.deleteStory = (async(req, res)=>{
     let id = req.params.id
     await Story.destroy({where: {id}}).then(()=>{
         return res.status(200).json({
