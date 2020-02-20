@@ -1,6 +1,13 @@
 const Story = require ('../models/Story');
 
-exports.createStory = (async (req, res, next)=>{
+/**
+ * Let user create a story
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} json response
+ */
+
+exports.createStory = (async(req, res)=>{
     let story = await Story.build({
         summary: req.body.summary,
         type: req.body.type, 
@@ -12,18 +19,18 @@ exports.createStory = (async (req, res, next)=>{
         status: "PENDING"
 
     });
-    await story.save().then((saved)=>{
+     await story.save().then((saved)=>{
         if(saved){
-            return res.status(201).json({
+             res.status(201).json({
                 Message: "Story Created Successfully"
             })
         }else{
-            return res.status(400).json({
+             res.status(400).json({
                 Message: "Something Went Wrong!"
             })
         }
     }).catch((error)=>{
-        return res.status(404).json(error)
+         res.status(404).json(error)
     })
     
   });

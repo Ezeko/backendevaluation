@@ -1,8 +1,14 @@
 const User = require('../models/User')
 const Story = require('../models/Story')
 
-const userPara = 
-exports.getUsersStories = ((req, res, next)=>{
+
+/**
+ * Let user get the story created by them
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} json response
+ */
+exports.getUsersStories = ((req, res)=>{
     let user = req.params.user;
     console.log(user);
        User.findOne({where: {id: user}}).then((detail)=>{
@@ -15,10 +21,10 @@ exports.getUsersStories = ((req, res, next)=>{
             })            
         }else{
              res.status(400).json({
-                message: 'Not a valid Id'
+                message: 'Something went wrong'
             })
         
-        }return;
+        }
         })
     
     })
