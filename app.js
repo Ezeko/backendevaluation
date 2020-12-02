@@ -26,9 +26,9 @@ const app = express();
         next();
         return;
       });*/
-   app.use(cors());
-   app.use(express.json());
-   app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/', home.gate);
