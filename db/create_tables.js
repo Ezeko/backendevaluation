@@ -14,7 +14,7 @@ Story.sync({force: true}).then(()=>{
 const create_users_table = ()=>{
     User.sync({force: true}).then(()=>{
     
-    console.log('table created')
+    console.log('users table created')
 }).catch(err=>{
     console.log(err)
 })

@@ -8,7 +8,7 @@
 
 exports.gate = async (req, res, next)=>{
     
-    if(res.statusCode == 200){
+  if(res.statusCode == 200){
       await res.status(200).json({'status': 'Ok',
       'message': 'Connected to the API'
   })}else{

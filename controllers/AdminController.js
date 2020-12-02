@@ -11,13 +11,13 @@ const Story = require('../models/Story')
 exports.getStories = ((req, res)=>{
     let adminId = req.params.user;
       User.findOne({where: {id: adminId}}).then((data)=>{
-        console.log(data)
+        //console.log(data)
         if((data.isAdmin)){
             //display list
            try{ Story.findAll().
 
                 then((stories)=>{
-                    console.log(stories)
+                    // console.log(stories)
                     res.status(200).json(stories)
                     
                 })}
